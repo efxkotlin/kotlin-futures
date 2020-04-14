@@ -1,2 +1,2 @@
 # kotlin-futures
-CompletableFuture future demo with Kotlin
+CompletableFuture demo with Kotlin
