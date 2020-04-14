@@ -30,8 +30,8 @@ class CacheSupportCustomerRepository(private val objectStore: ObjectStore) : Cus
     override fun saveCustomer(customer: Customer): CompletableFuture<Void> {
         return CompletableFuture.runAsync {
             readWriteLock.writeLock().withLock {
-                objectStore.write(customer.uuid, customer)
-                concurrentCustomerCache[customer.uuid] = customer
+                objectStore.write(customer.uuid!!, customer)
+                concurrentCustomerCache[customer.uuid!!] = customer
             }
         }
     }

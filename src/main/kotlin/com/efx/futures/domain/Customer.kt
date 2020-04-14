@@ -1,15 +1,16 @@
 package com.efx.futures.domain
 
+import java.io.Serializable
 import java.util.*
 
-class Customer(
-    var uuid: UUID,
-    val firstName:String,
-    val lastName:String,
-    val contactNumber:String,
-    val zipCode:String,
-    val email:String
-) {
+class Customer : Serializable {
+
+    var uuid: UUID? = null
+    var firstName: String = ""
+    var lastName: String = ""
+    var zipCode: String = ""
+    var email: String = ""
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

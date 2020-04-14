@@ -8,8 +8,6 @@ import java.util.concurrent.CompletableFuture
 class CustomerService constructor(private val customerRepository: CustomerRepository) {
 
     fun saveCustomer(customer: Customer):CompletableFuture<UUID> {
-        val uuid = UUID.randomUUID()
-        customer.uuid = uuid
         return customerRepository.saveCustomer(customer).thenApply { customer.uuid }
     }
 
@@ -22,12 +20,6 @@ class CustomerService constructor(private val customerRepository: CustomerReposi
     fun getCustomerLastName(uuid: UUID):CompletableFuture<String?> {
         return customerRepository.getCustomer(uuid).thenApply {
             customer -> customer?.lastName
-        }
-    }
-
-    fun getCustomerContactNumber(uuid: UUID):CompletableFuture<String?> {
-        return customerRepository.getCustomer(uuid).thenApply {
-            customer -> customer?.contactNumber
         }
     }
 
